@@ -257,10 +257,19 @@ font-size: 0.8rem;
 	left: 0;
 	right: 0;
 	text-align: center;
+  -webkit-animation: shake 1.2s infinite ease;
+  animation: shake 1.2s infinite ease;
 }
 
-.link img {
-	width: 24px;
+.link a, .link-top a {
+	display: block;
+	width: 6rem;
+	margin: 0 auto;
+}
+
+.link img, .link-top img {
+	width: 33px;
+	height: 19px;
 }
 
 @-webkit-keyframes shake {
@@ -271,6 +280,7 @@ font-size: 0.8rem;
 			bottom: 0;
     }
 }
+
 @keyframes shake {
     0%{
 			bottom: 10px;
@@ -279,7 +289,32 @@ font-size: 0.8rem;
 			bottom: 0;
     }
 }
-.link {
-  -webkit-animation: shake 1.2s infinite ease;
-  animation: shake 1.2s infinite ease;
+
+.link-top {
+	position: absolute;
+	height: 20px;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+  -webkit-animation: shake-top 1.2s infinite ease;
+  animation: shake-top 1.2s infinite ease;
+}
+
+@-webkit-keyframes shake-top {
+    0%{
+			top: 10px;
+    }
+    100% {
+			top: 0;
+    }
+}
+
+@keyframes shake-top {
+    0%{
+			top: 10px;
+    }
+    100% {
+			bottom: 0;
+    }
 }
