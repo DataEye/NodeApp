@@ -209,7 +209,7 @@
 		<script src="./js/touch.js?v=3"></script>
 		<script>
 			$(function() {
-				var eventName = 'click'
+				var eventName = 'ontouchstart' in document ? 'singleTap' : 'click'
 				$('.panel-title').on(eventName, function() {
 					var panelBody = $(this).parents('.panel').find('.panel-body')
 					panelBody.parent().siblings().find('.panel-body').hide()
