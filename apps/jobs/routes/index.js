@@ -10,10 +10,12 @@ router.get('/', function(req, res) {
 router.post('/send', function(req, res) {
 	var nickname = req.param('nickname') || ''
 	var tel = req.body.tel || ''
-	if (!nickname || !tel) {
+	var position = req.body.position || ''
+	var qq = req.body.qq || ''
+	if (!nickname || !tel || !position || !qq) {
 		return res.send(400, '缺少相关信息，请检查表单')
 	}
-	logger.info(nickname.replace(/\s/g, '') + ' ' + tel.replace(/\s/g, ''))
+	logger.info([position, nickname, tel, qq].join(' '))
 	res.json({
 		result: 0
 	})
