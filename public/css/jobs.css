@@ -1,0 +1,233 @@
+body {
+	overflow: hidden;
+}
+
+strong {
+	font-weight: normal;
+}
+
+.share_wx {
+	color:#fff;
+	text-align: right;
+	font-size: 1.2em;
+}
+
+#modal_share .modal-backdrop{
+	opacity: 0.8;
+}
+
+.pages {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: 0 1em;
+	font-size: 1.2em;
+	background: #172e56;
+}
+
+.pages-home {
+	top: 0;
+	bottom: 0;
+}
+
+.banner {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+
+.banner img {
+	width: 100%;
+}
+
+.desc {
+	color: #FFF;
+	margin-top: 3em;
+}
+
+.arrow-down {
+	width: 41px;
+	height: 25px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -20px;
+	background: url(/img/jobs/arrow-down.png);
+}
+
+
+.head-wrapper {
+	background-color: #172e56;
+	margin-left: -1em;
+	margin-right: -1em;
+	padding: 0 1em 1em 1em;
+}
+
+#wrapper .pages-position {
+	background: #FFF;
+	padding: 0 0.5em;
+}
+
+.pages-position .head{
+	float: left;
+	width: 40%;
+	margin-top: 1em;
+}
+
+.pages-position img {
+	width: 100%;
+}
+
+
+
+.pages-position .logo {
+	float: right;
+	width: 20%;
+	margin-top: 1.2em;
+	text-align: right;
+}
+
+.arrow-up {
+	width: 41px;
+	height: 25px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -20px;
+	background: url(/img/jobs/arrow-up.png);
+}
+
+.datalist {
+	background: #FFF;
+	padding: 0;
+}
+
+.datalist ul {
+	padding: 0;
+}
+
+.datalist ul>li {
+	list-style: none;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #cfd3d7;
+}
+
+.datalist h3 {
+	color: #172e56;
+	font-size: 1.3em;
+}
+
+.datalist h3 span {
+	display: inline-block;
+	background: #cfd3d7;
+	line-height: 22px;
+	padding: 2px 6px 6px 6px;
+	border-radius: 5px;
+}
+
+.datalist li.current h3 span {
+	background: #db4453;
+}
+
+.datalist li.current h3 {
+	color: #db4453;
+}
+
+.datalist li.current .position-desc {
+	display: block;
+}
+
+.position-desc {
+	display: none;
+	color: #172e56;
+	padding-left: 32px;
+}
+
+footer {
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 6px 0;
+	border-top: 1px solid #cfd3d7;
+	/*display: none;*/
+}
+
+footer .btns{
+	display: inline-block;
+	text-align: center;
+	z-index: 3;
+	position: relative;
+}
+
+footer .btn {
+	font-size: 1em;
+	border-radius: 5px;
+	padding: 4px 24px;
+	color:#FFF;
+	border-radius: 5px;
+}
+
+footer .btn:hover, footer .btn:focus, footer .btn.focus {
+	color: #eee;
+	text-decoration: none;
+}
+
+#sell {
+	background-color: #db4453;
+	margin-right: 2em;
+}
+
+#share {
+	background-color: #172e56;
+}
+
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	z-index: 2;
+	background: #FFF;
+}
+
+.islider-dom {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.islider-pic {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    list-style: none;
+}
+
+.islider-img > img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#wrapper section{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #172e56;
+}
