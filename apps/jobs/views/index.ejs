@@ -8,252 +8,34 @@
 		<meta name="apple-touch-fullscreen" content="yes" />
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
-		<link rel="stylesheet" href="./css/bootstrap.css?v=3.3">
-		<link rel="stylesheet" href="./css/jobs.css?v=3.3">
+		<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="./css/jobs.css">
 	</head>
 	<body>
-		<div id="wrapper">
-		</div>
+		<% include ./incs/home.ejs %>
 
-		<script type="text" id="home">
-			<section>
-				<div class="banner">
-					<img src="/img/jobs/banner.png" alt="">
-				</div>
+		<% include ./incs/positions.ejs %>
 
-				<div class="desc">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataEye是立足移动游戏，服务游戏全产业链的第三方专业数据分析服务平台。共有四大产品线：D-OAP运营分析平台、D-EAP体验分析平台、D-HAP HTML5游戏分析平台、D-IAP游戏投后分析平台。
-					<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataEye助力游戏产业链各环节的数据统计分析，打造第三方"零距离"专业服务，开启企业私有云、企业定制化、服务全球化、多数据源采集等特色服务。
-				</div>
+		<% include ./incs/contact.ejs %>
 
-				<div class="arrow-down"></div>
-			</section>
-		</script>
-
-<script type="text" id="pos">
-		<section class="pages-position">
-			<div class="arrow-up"></div>
-
-			<div class="head-wrapper">
-				<div class="head">
-					<img src="/img/jobs/banner02.png" alt="">
-				</div>
-
-				<div class="logo">
-					<img src="/img/jobs/logo.png" alt="">
-				</div>
-
-				<div style="clear: both;"></div>
-			</div>
-
-			<div class="datalist">
-				<ul>
-					<li>
-						<h3>
-							<span>
-								<img src="/img/jobs/more.png" alt="">
-							</span>
-							Java研发(WEB方向)
-						</h3>
-						<div class="position-desc">
-							<strong>职位描述：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-							<strong>职位要求：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-						</div>
-					</li>
-					<li>
-						<h3>
-							<span>
-								<img src="/img/jobs/more.png" alt="">
-							</span>
-							数据挖掘工程师(Hadoop方向)
-						</h3>
-						<div class="position-desc">
-							<strong>职位描述：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-							<strong>职位要求：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-																<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-																<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-						</div>
-					</li>
-					<li>
-						<h3>
-							<span>
-								<img src="/img/jobs/more.png" alt="">
-							</span>
-							游戏数据分析师</h3>
-						<div class="position-desc">
-							<strong>职位描述：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-							<strong>职位要求：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-						</div>
-					</li>
-					<li>
-						<h3>
-							<span>
-								<img src="/img/jobs/more.png" alt="">
-							</span>
-							数据产品经理</h3>
-						<div class="position-desc">
-							<strong>职位描述：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-							<strong>职位要求：</strong>
-							<ol>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-								<li> CSS properties of elements in the</li>
-							</ol>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-			<footer>
-				<div class="btns">
-					<button id="sell" class="btn">我要自荐</button>
-					<button id="share" class="btn">推荐给朋友</button>
-				</div>
-
-				<div class="mask"></div>
-			</footer>
-		</section>
-	</script>
-
-		<div class="modal fade in" id="modal_form">
-			<div class="modal-backdrop fade in"></div>
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">×</span>
-						<span class="sr-only">关闭</span>
-						</button>
-						<h4 class="modal-title">填写联系方式</h4>
-					</div>
-					<div class="modal-body">
-						<form method="post" id="form1">
-							<fieldset>
-								<label>应聘岗位</label>
-								<select name="position" class="form-control">
-									<option value="Java研发(WEB方向)">Java研发(WEB方向)</option>
-									<option value="数据挖掘工程师(Hadoop方向)">数据挖掘工程师(Hadoop方向)</option>
-									<option value="游戏数据分析师">游戏数据分析师</option>
-									<option value="数据产品经理">数据产品经理</option>
-								</select>
-								<label>称呼</label>
-								<input type="text" name="nickname" placeholder="填写称呼，方便我们联系您" maxlength="20"
-									required class="form-control">
-								<label>电话号码</label>
-								<input type="text" name="tel" maxlength="15" required
-									placeholder="请输入您的电话号码" class="form-control">
-								<label>QQ</label>
-								<input type="text" name="qq" maxlength="15" required
-									placeholder="请输入qq号码" class="form-control">
-								<p class="text-center" style="margin-top: 15px;">
-									<button type="submit" class="btn btn-primary btn-block" id="btn_send">立即自荐</button>
-									<button type="button" class="btn btn-default btn-block" id="close">算了，不想被打扰</button>
-								</p>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade in" id="modal_share">
-			<div class="modal-backdrop fade in"></div>
-			<div class="modal-dialog">
-				<div class="share_wx">点击右上角菜单推荐给朋友或者分享到朋友圈</div>
-			</div>
-		</div>
-
-		<script src="./js/zepto.js?v=3"></script>
-		<script src="./js/touch.js?v=3"></script>
-		<script src="./js/islider.js"></script>
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script src="./js/jquery.mobile-1.4.5.min.js"></script>
 		<script>
 			$(function() {
-				var list = [{
-							'content' : $('#home').html()
-						},
-						{
-							'content' : $('#pos').html()
-						}
-				];
-
-				var islider = new iSlider({
-				    data: list,
-				    type: 'dom',
-				    dom: document.getElementById("wrapper"),
-				    duration: 1000,
-				    isVertical: true
-				});
-
-				var eventName = 'ontouchstart' in document ? 'singleTap' : 'click'
-				$('.datalist h3').on(eventName, function() {
-					var li = $(this).parents('li')
-					if (!li.hasClass('current')) {
-						$('.current').removeClass('current')
-						li.addClass('current')
-						$('.datalist img').attr('src', '/img/jobs/more.png')
-						$(this).find('img').attr('src', '/img/jobs/more02.png')
+				$('#pos li>a').on('tap', function() {
+					if($(this).hasClass('ui-icon-carat-r')) {
+						$(this).removeClass('ui-icon-carat-r').addClass('ui-icon-carat-d')
+							.siblings().show()
 					} else {
-						$('.current').removeClass('current')
-						$(this).find('img').attr('src', '/img/jobs/more.png')
+						$(this).removeClass('ui-icon-carat-d').addClass('ui-icon-carat-r')
+							.siblings().hide()
 					}
 				})
 
-				$('#sell').on(eventName, function() {
-					$('#modal_form').show()
+				$('#share').on('tap', function() {
+					alert('打开右上角菜单，点击“推荐给朋友”或者“分享到朋友圈”')
 				})
-				$('.close, #close').on(eventName, function() {
-					$('#modal_form').hide()
-				})
+
 				$('#form1').on('submit', function(e) {
 					e.preventDefault()
 					var form = $('#form1')[0]
@@ -273,8 +55,8 @@
 						data: data,
 						success: function() {
 							alert('您的信息已提交，感谢关注DataEye。我们的工作人员会在24小时内和您取得联系，请保持联系方式畅通。')
-							$('#modal_form').hide()
 							form.reset()
+							location.href = '#pos'
 						},
 						error: function(xhr, status, text) {
 							alert(xhr.responseText)
@@ -282,8 +64,6 @@
 					})
 					return false
 				})
-				$('#share').on(eventName, function() {
-					alert('点击右上角菜单推荐给朋友或者分享到朋友圈')
-				})
+
 			})
 		</script>

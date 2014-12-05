@@ -1,0 +1,29 @@
+<section data-role="dialog" id="contact">
+	<div data-role="header">
+		<h1>填写联系方式</h1>
+	</div>
+	<form method="post" id="form1">
+		<fieldset>
+			<label>应聘岗位</label>
+			<select name="position" class="form-control">
+				<option value="Java研发(WEB方向)">Java研发(WEB方向)</option>
+				<option value="数据挖掘工程师(Hadoop方向)">数据挖掘工程师(Hadoop方向)</option>
+				<option value="游戏数据分析师">游戏数据分析师</option>
+				<option value="数据产品经理">数据产品经理</option>
+			</select>
+			<label>称呼</label>
+			<input type="text" name="nickname" placeholder="填写称呼，方便我们联系您" maxlength="20"
+				required class="form-control">
+			<label>电话号码</label>
+			<input type="tel" name="tel" maxlength="15" required
+				placeholder="请输入您的电话号码" class="form-control">
+			<label>QQ</label>
+			<input type="text" name="qq" maxlength="15" required
+				placeholder="请输入qq号码" class="form-control">
+			<p class="text-center" style="margin-top: 15px;">
+				<button type="submit" class="ui-btn ui-shadow ui-corner-all" id="btn_send">立即自荐</button>
+				<a href="#pos" class="ui-btn ui-shadow ui-corner-all" id="close">算了，不想被打扰</a>
+			</p>
+		</fieldset>
+	</form>
+</section>
