@@ -25,10 +25,10 @@
 				$('#pos li>a').on('tap', function() {
 					if($(this).hasClass('ui-icon-carat-r')) {
 						$(this).removeClass('ui-icon-carat-r').addClass('ui-icon-carat-d')
-							.siblings().show()
+							.siblings().slideDown()
 					} else {
 						$(this).removeClass('ui-icon-carat-d').addClass('ui-icon-carat-r')
-							.siblings().hide()
+							.siblings().slideUp()
 					}
 				})
 
