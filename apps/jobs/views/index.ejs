@@ -26,6 +26,7 @@
 					location.href = location.href.split('#')[0] + '#'
 				}
 				$('#pos li>a').on('tap', function() {
+					$('#pos_list').css('margin-bottom', $('#tools').outerHeight() + 'px')
 					if($(this).hasClass('ui-icon-carat-r')) {
 						$(this).removeClass('ui-icon-carat-r').addClass('ui-icon-carat-d')
 							.siblings().slideDown()
@@ -36,7 +37,7 @@
 				})
 
 				$('#share').on('tap', function() {
-					alert('打开右上角菜单，点击“推荐给朋友”或者“分享到朋友圈”')
+					alert('打开右上角菜单，点击“发送给朋友”或者“分享到朋友圈”')
 				})
 
 				$('#form1').on('submit', function(e) {

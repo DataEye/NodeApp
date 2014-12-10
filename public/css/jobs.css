@@ -1,10 +1,11 @@
 body, input, select, textarea, button, .ui-btn {
 	font-family: Tahoma, microsoft yahei, "微软雅黑";
+	font-size: 1rem;
 }
 
 .banner{
 	width: 90%;
-	margin: 1em auto;
+	margin: 1rem auto;
 }
 
 .banner img {
@@ -19,16 +20,15 @@ body, input, select, textarea, button, .ui-btn {
 .page-home .desc {
 	color: #FFF;
 	text-shadow: none;
-	line-height: 1.4;
-	font-size: 1.2rem;
+	line-height: 1.2;
+	font-size: 1rem;
 	width: 90%;
 	margin: 0 auto;
-	padding-top: 1rem;
 }
 
 .btns {
 	width: 90%;
-	margin: 4em auto;
+	margin: 0 auto;
 }
 /* 首页ends */
 
@@ -37,30 +37,30 @@ body, input, select, textarea, button, .ui-btn {
 	background: #172e56;
 	width: 100%;
 	margin: 0;
-	padding: 1em 0;
+	padding: 1rem 0;
 }
 
 .head {
 	float: left;
 	width: 40%;
-	margin-left: 1em;
+	margin-left: 1rem;
 }
 
 .logo {
 	float: right;
 	width: 20%;
-	margin-right: 1em;
+	margin-right: 1rem;
 }
 
 #pos li>div {
 	display: none;
-	padding: 0.5em 0 0.5em 2em;
+	padding: 0.5rem 0 0.5rem 1.6rem;
 	color: #172e56;
 }
 
 #pos li a {
 	color: #172e56;
-	font-size: 1.4rem;
+	font-size: 1rem;
 	line-height: 1.4;
 }
 
@@ -83,10 +83,9 @@ footer {
 }
 
 #pos footer .btn {
-  font-size: 1.2em;
+  font-size: 1rem;
   border-radius: 5px;
   color: #FFF;
-  border-radius: 5px;
   text-shadow: none;
 }
 
@@ -115,7 +114,7 @@ footer .btn:hover, footer .btn:focus, footer .btn.focus {
 }
 
 #contact fieldset {
-	padding: 1em;
+	padding: 1rem;
 }
 
 #btn_send {
