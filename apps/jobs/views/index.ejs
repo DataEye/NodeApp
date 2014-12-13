@@ -33,7 +33,7 @@
 					$('[name="position"]').val(posName)
 				})
 
-				$('#share').on('tap', function() {
+				$('.share').on('tap', function() {
 					alert('打开右上角菜单，点击“发送给朋友”或者“分享到朋友圈”')
 				})
 
@@ -57,7 +57,7 @@
 						success: function() {
 							alert('您的信息已提交，感谢关注DataEye。我们的工作人员会在24小时内和您取得联系，请保持联系方式畅通。')
 							form.reset()
-							location.href = '#pos'
+							location.href = '#pos_type'
 						},
 						error: function(xhr, status, text) {
 							alert(xhr.responseText)

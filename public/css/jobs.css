@@ -97,12 +97,12 @@ color:#eee;
 text-decoration:none;
 }
 
-#sell {
-background-color:#db4453;
+.sell {
+background-color:#db4453 !important;
 }
 
-#share {
-background-color:#172e56;
+.share {
+background-color:#172e56 !important;
 }
 
 .mask {
