@@ -14,6 +14,8 @@
 	<body>
 		<% include ./incs/home.ejs %>
 
+		<% include ./incs/position_type.ejs %>
+
 		<% include ./incs/positions.ejs %>
 
 		<% include ./incs/contact.ejs %>
@@ -25,15 +27,10 @@
 				if(location.hash) {
 					location.href = location.href.split('#')[0] + '#'
 				}
-				$('#pos li>a').on('tap', function() {
-					$('#pos_list').css('margin-bottom', $('#tools').outerHeight() + 'px')
-					if($(this).hasClass('ui-icon-carat-r')) {
-						$(this).removeClass('ui-icon-carat-r').addClass('ui-icon-carat-d')
-							.siblings().slideDown()
-					} else {
-						$(this).removeClass('ui-icon-carat-d').addClass('ui-icon-carat-r')
-							.siblings().slideUp()
-					}
+
+				$('#contact').on('pagebeforeshow', function(e, data) {
+					var posName = data.prevPage.find('.pos-wrap h3').text()
+					$('[name="position"]').val(posName)
 				})
 
 				$('#share').on('tap', function() {
