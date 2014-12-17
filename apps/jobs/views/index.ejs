@@ -23,6 +23,11 @@
 		<script src="./js/jquery-2.1.1.min.js"></script>
 		<script src="./js/jquery.mobile-1.4.5.min.js"></script>
 		<script>
+			function clearClass() {
+				$('.bg-one').removeClass('bg-one')
+				$('.bg-two').removeClass('bg-two')
+				$('.bg-three').removeClass('bg-three')
+			}
 			$(function() {
 				if(location.hash) {
 					location.href = location.href.split('#')[0] + '#'
@@ -30,24 +35,18 @@
 
 				$.mobile.defaultPageTransition = 'flow'
 
-				$('.bg-one').on('swipeleft tap', function(e) {
-					location.href = '#product'
+				$('#home .bg').addClass('bg-one')
+
+				// 蛋很疼
+				$('#home,#product,#team').on('pageshow', function(){
+					var bg = $(this).find('.bg')
+					setTimeout(function() {
+						bg.addClass(bg.attr('data-cls'))
+					}, 120)
 				})
 
-				$('.bg-two').on('swipeleft tap', function(e) {
-					location.href = '#team'
-				})
-
-				$('.bg-two').on('swiperight', function(e) {
-					location.href = '#home'
-				})
-
-				$('.bg-three').on('swipeleft tap', function(e) {
-					location.href = '#pos_type'
-				})
-
-				$('.bg-three').on('swiperight', function(e) {
-					location.href = '#product'
+				$('section').on('pagehide', function() {
+					clearClass()
 				})
 
 				$('#contact').on('pagebeforeshow', function(e, data) {
