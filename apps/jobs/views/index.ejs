@@ -28,6 +28,28 @@
 					location.href = location.href.split('#')[0] + '#'
 				}
 
+				$.mobile.defaultPageTransition = 'flow'
+
+				$('.bg-one').on('swipeleft tap', function(e) {
+					location.href = '#product'
+				})
+
+				$('.bg-two').on('swipeleft tap', function(e) {
+					location.href = '#team'
+				})
+
+				$('.bg-two').on('swiperight', function(e) {
+					location.href = '#home'
+				})
+
+				$('.bg-three').on('swipeleft tap', function(e) {
+					location.href = '#pos_type'
+				})
+
+				$('.bg-three').on('swiperight', function(e) {
+					location.href = '#product'
+				})
+
 				$('#contact').on('pagebeforeshow', function(e, data) {
 					var posName = data.prevPage.find('.pos-wrap h3').text()
 					$('[name="position"]').val(posName)

@@ -48,11 +48,15 @@ width:90%;
 margin:0 auto;
 }
 
+.pages-position {
+	background:#5b99d6;
+}
+
 .pages-position .banner,.page-item .banner {
-background:#172e56;
+background:#114376;
 width:100%;
 margin:0;
-padding:1rem 0;
+padding:1rem 0 0 0;
 }
 
 .head {
@@ -73,7 +77,7 @@ position:fixed;
 left:0;
 right:0;
 bottom:0;
-border-top:1px solid #cfd3d7;
+border-top:1px solid #FFF;
 padding:6px 0;
 }
 
@@ -90,6 +94,7 @@ font-size:1rem;
 border-radius:5px;
 color:#FFF !important;
 text-shadow:none !important;
+border: none;
 }
 
 footer .btn:hover,footer .btn:focus,footer .btn.focus {
@@ -113,7 +118,7 @@ width:100%;
 height:100%;
 opacity:.8;
 z-index:2;
-background:#FFF;
+background:#5b99d6;
 }
 
 #contact fieldset {
@@ -139,15 +144,17 @@ font-size:1.4rem;
 font-weight:600;
 display:inline-block;
 position:relative;
-color:#5a5a5a;
+color:#FFF;
 margin: 1rem 0;
+text-shadow: none;
 }
 
 .job_list {
 overflow:hidden;
-border-bottom:1px solid #ccc;
+border-bottom:1px solid #FFF;
 width: 96%;
 margin:0 auto;
+padding-bottom: 12px;
 }
 
 .job_list .job_box {
@@ -160,15 +167,67 @@ margin-bottom: 0.6rem;
 }
 
 .job_list .job_box_inner {
-border:1px solid #ccc;
+border:0;
 display:inline-block;
 width:92%;
-color:#5a5a5a !important;
+color:#114376 !important;
+background-color: #FFF;
 }
 
 .pos-wrap {
 	width: 90%;
 	margin: 0 auto;
 	margin-bottom: 160px;
+	color:#FFF;
+	text-shadow: none;
 }
 
+#home {
+	background-color: #364271;
+}
+
+#product {
+	background-color: #289b84;
+}
+
+#team{
+	background-color: #d47800;
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.bg-one {
+	background: url(../img/jobs/page-one.png) no-repeat center;
+	background-size: cover;
+}
+
+.bg-two {
+	background: url(../img/jobs/page-two.png) no-repeat center;
+	background-size: cover;
+}
+
+.bg-three {
+	background: url(../img/jobs/page-three.png) no-repeat center;
+	background-size: cover;
+}
+
+#pos_type {
+	background-color: #5b99d6;
+	color: #FFF;
+}
+
+.arrow {
+	text-align: center;
+	height: 20px;
+}
+
+.arrow img {
+	width: 31px;
+	height: 20px;
+}
