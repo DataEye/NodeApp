@@ -1,3 +1,13 @@
+html, body, body div{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+
 body,input,select,textarea,button,.ui-btn {
 font-family:Tahoma, microsoft yahei, 微软雅黑;
 font-size:1rem;
@@ -385,6 +395,17 @@ z-index: 99;
 }
 
 #view_pos_type {
+	display: block;
+	position: relative;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	background-color: #FFF;
 	border: 0;
 	color: #d45a00;
@@ -395,4 +416,8 @@ z-index: 99;
 	margin-left: 25%;
 	display: none;
 	z-index: 30;
+	font-size: 16px;
+	border-radius: 5px;
+	font-weight: bold;
+	text-decoration: none;
 }
