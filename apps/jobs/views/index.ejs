@@ -12,10 +12,24 @@
 	</head>
 	<body>
 		<div class="page-home" id="home" style="display: block;">
-			<div class="bg bg-1" data="1" id="bg-1"></div>
-			<div class="bg bg-2" data="2" id="bg-2"></div>
-			<div class="bg bg-3" data="3" id="bg-3"></div>
+			<div class="bg-wrapper">
+				<div class="bg bg-1" data="1" id="bg-1">
+					<div class="ad">
+						<img src="/img/jobs/down.png" alt="">
+					</div>
+				</div>
+				<div class="bg bg-2" data="2" id="bg-2">
+					<div class="ad">
+						<img src="/img/jobs/down.png" alt="">
+					</div>
+				</div>
+				<div class="bg bg-3" data="3" id="bg-3">
+					<a href="/jobs/list"  id="view_pos_type">查看招聘职位</a>
+				</div>
+			</div>
 		</div>
+
+
 
 		<div id="loading" style="display: block;">
 			<div class="spinner">
@@ -40,7 +54,6 @@
 		  </div>
 		</div>
 
-		<a href="/jobs/list" class="ui-btn ui-shadow ui-corner-all" id="view_pos_type">查看招聘职位</a>
 
 
 		<script src="/js/jquery-2.1.1.min.js"></script>
@@ -70,86 +83,79 @@
 			]
 			loadImages(imgs, function() {
 				$('#loading').hide()
-		    $('.bg').eq(0).show()
-			})
+				var height = document.documentElement.clientHeight
+		    $('.bg').css('height', height + 'px').eq(0).show()
+		    $('.bg-wrapper').css('height', height * 3 + 'px')
 
-			$(function() {
-				var now, next, pre, nowid, nextid, preid, windowheight = document.documentElement.clientHeight
+		    var wrapper = $('.bg-wrapper')[0]
+		    var startY = 0
+		    var moveY = 0
+		    var startTop = 0
+		    var newTop = 0
+		    var animation = true
+		    wrapper.addEventListener('touchstart', function(event) {
+		    	if (event.target.tagName == 'A') {
+		    		return
+		    	}
+		    	event.preventDefault();
+			    var touch = event.targetTouches[0]; //位于当前DOM元素上的手指的一个列表
+			    startY = touch.pageY;
+			    moveY = 0;
+			    startTop = parseInt($(this).css('top'))
+		    }, false)
 
-				function touchStart(event, target) {
-				    event.preventDefault();
-				    var touch = event.targetTouches[0]; //位于当前DOM元素上的手指的一个列表
-				    startY = touch.pageY;
-				    moveY = 0;
-				}
+		    wrapper.addEventListener('touchmove', function(event) {
+		    	if (event.target.tagName == 'A') {
+		    		return
+		    	}
+		    	event.preventDefault();
+		    	var touch = event.targetTouches[0]
+		    	moveY = touch.pageY - startY
 
-				function touchMove(event) {
-			    event.preventDefault();
-			    var touch = event.touches[0];
-			    moveY = touch.pageY - startY;
-			    now = parseInt(this.getAttribute('data'));
-			    next = now + 1;
-			    pre = now - 1;
-			    nowid = document.getElementById('bg-' + now), nextid = document.getElementById('bg-' + next), preid = document.getElementById('bg-' + pre);
-			    if (now != imgs.length && moveY < 0) {
-			        nowid.style.zIndex = '10';
-			        console.log(windowheight)
-			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
-			        nextid.style.zIndex = '20';
-			        nextid.style.display = 'block';
-			        nextid.style.webkitTransform = 'translate(0px,' + (windowheight - Math.abs(moveY)) + 'px) translateZ(0px)';
-			    } else if (moveY > 0 && now != 1) {
-			        nowid.style.zIndex = '10';
-			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
-			        preid.style.zIndex = '20';
-			        preid.style.display = 'block';
-			        preid.style.webkitTransform = 'translate(0px,' + (windowheight - Math.abs(moveY)) * -1 + 'px) translateZ(0px)';
-			    }
-				}
+		    	var top = parseInt($(this).css('top'))
+		    	// 顶部下拉禁止移动
+		    	if (top >= 0 && moveY >= 0) {
+		    		animation = false
+		    		return
+		    	}
+		    	// 底部上拉禁止移动
+		    	if(top == -2 * height && moveY <= 0) {
+		    		animation = false
+		    		return
+		    	}
 
-				function touchEnd(event) {
-			    event.preventDefault();
-			    if (now != imgs.length && moveY < 0) { //move up
-		        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
+		    	animation = true
+		    	newTop = startTop + moveY
+		    	if (newTop > 0 ) {
+		    		newTop = 0
+		    	} else if (newTop < -1 * height * 2) {
+		    		newTop = -1 * height * 2
+		    	}
+	    		$(this).css('top', newTop + 'px')
+		    }, false)
 
-		        nextid.style.zIndex = '20';
-		        nextid.style.display = 'block';
-		        nextid.style.webkitTransform = 'translate(0px,0px) translateZ(0px)';
+		    wrapper.addEventListener('touchend', function(event) {
+		    	if (event.target.tagName == 'A') {
+		    		return
+		    	}
+		    	event.preventDefault()
+		    	if (animation) {
+		    		// 下拉
+		    		if(moveY > 0) {
+		    			newTop = parseInt(newTop/height) * height
+		    		}
 
-		        setTimeout(function() {
-		            nowid.style.display = 'none';
-		            nowid.style.webkitTransform = 'translate(0px,0px) translateZ(0px) scale(1)';
-		        }, 500);
-
-		        if (now == imgs.length - 1) {
-		            document.getElementById('view_pos_type').style.display = 'block';
-		        } else {
-		            document.getElementById('view_pos_type').style.display = 'none';
-		        }
-
-			    } else if (moveY > 0 && now != 1) { //move down
-			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
-			        preid.style.zIndex = '20';
-			        preid.style.display = 'block';
-			        preid.style.webkitTransform = 'translate(0px,0px) translateZ(0px)';
-
-
-			        setTimeout(function() {
-			            nowid.style.display = 'none';
-			            nowid.style.webkitTransform = 'translate(0px,0px) translateZ(0px) scale(1)';
-			        }, 500);
-
-			        if (now == imgs.length) {
-			            document.getElementById('view_pos_type').style.display = 'none';
-			        }
-
-			    }
-				}
-
-				$('.bg').each(function() {
-					this.addEventListener("touchstart", touchStart, false);
-					this.addEventListener("touchmove", touchMove, false);
-					this.addEventListener("touchend", touchEnd, false);
-				})
+			    	var abs = Math.abs(newTop)
+			    	if (abs > 0 && abs <= height) {
+			    		newTop = -1 * height
+			    	}
+			    	if (abs > height && abs <= 2 * height) {
+			    		newTop = -2 * height
+			    	}
+			    	$(this).animate({
+			    		top: newTop + 'px'
+			    	}, 300)
+		    	}
+		    }, false)
 			})
 		</script>

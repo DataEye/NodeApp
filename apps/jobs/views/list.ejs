@@ -22,9 +22,6 @@
 		<script src="/js/jquery.mobile-1.4.5.min.js"></script>
 		<script>
 			$(function() {
-				if(location.hash) {
-					location.href = location.href.split('#')[0] + '#'
-				}
 
 				$('#contact').on('pagebeforeshow', function(e, data) {
 					var posName = data.prevPage.find('.pos-wrap h3').text()
