@@ -7,6 +7,10 @@ router.get('/', function(req, res) {
 	res.render('jobs/views/index')
 })
 
+router.get('/list', function(req, res) {
+	res.render('jobs/views/list')
+})
+
 router.post('/send', function(req, res) {
 	var nickname = req.param('nickname') || ''
 	var tel = req.body.tel || ''

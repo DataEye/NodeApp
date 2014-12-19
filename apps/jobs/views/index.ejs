@@ -8,84 +8,149 @@
 		<meta name="apple-touch-fullscreen" content="yes" />
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
-		<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="./css/jobs.css">
+		<link rel="stylesheet" href="/css/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="/css/jobs.css">
 	</head>
 	<body>
-		<% include ./incs/home.ejs %>
+		<div class="page-home" id="home" style="display: block;">
+			<div class="bg bg-1" data="1" id="bg-1"></div>
+			<div class="bg bg-2" data="2" id="bg-2"></div>
+			<div class="bg bg-3" data="3" id="bg-3"></div>
+		</div>
 
-		<% include ./incs/position_type.ejs %>
+		<div id="loading" style="display: block;">
+			<div class="spinner">
+		    <div class="spinner-container container1">
+		      <div class="circle1"></div>
+		      <div class="circle2"></div>
+		      <div class="circle3"></div>
+		      <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container2">
+		      <div class="circle1"></div>
+		      <div class="circle2"></div>
+		      <div class="circle3"></div>
+		      <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container3">
+		      <div class="circle1"></div>
+		      <div class="circle2"></div>
+		      <div class="circle3"></div>
+		      <div class="circle4"></div>
+		    </div>
+		  </div>
+		</div>
 
-		<% include ./incs/positions.ejs %>
+		<a href="/jobs/list" class="ui-btn ui-shadow ui-corner-all" id="view_pos_type">查看招聘职位</a>
 
-		<% include ./incs/contact.ejs %>
 
-		<script src="./js/jquery-2.1.1.min.js"></script>
-		<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+		<script src="/js/jquery-2.1.1.min.js"></script>
 		<script>
-			function clearClass() {
-				$('.bg-one').removeClass('bg-one')
-				$('.bg-two').removeClass('bg-two')
-				$('.bg-three').removeClass('bg-three')
+			function loadImages(sources, callback) {
+		    var count = 0,
+	        images = {},
+	        imgNum = 0;
+		    for (src in sources) {
+	        imgNum++;
+		    }
+		    for (src in sources) {
+	        images[src] = new Image();
+	        images[src].onload = function() {
+	            if (++count >= imgNum) {
+	                callback(images);
+	            }
+	        }
+	        images[src].src = sources[src];
+		    }
 			}
+
+			var imgs = [
+				'/img/jobs/page-one.png',
+				'/img/jobs/page-two.png',
+				'/img/jobs/page-three.png'
+			]
+			loadImages(imgs, function() {
+				$('#loading').hide()
+		    $('.bg').eq(0).show()
+			})
+
 			$(function() {
-				if(location.hash) {
-					location.href = location.href.split('#')[0] + '#'
+				var now, next, pre, nowid, nextid, preid, windowheight = document.documentElement.clientHeight
+
+				function touchStart(event, target) {
+				    event.preventDefault();
+				    var touch = event.targetTouches[0]; //位于当前DOM元素上的手指的一个列表
+				    startY = touch.pageY;
+				    moveY = 0;
 				}
 
-				$.mobile.defaultPageTransition = 'flow'
+				function touchMove(event) {
+			    event.preventDefault();
+			    var touch = event.touches[0];
+			    moveY = touch.pageY - startY;
+			    now = parseInt(this.getAttribute('data'));
+			    next = now + 1;
+			    pre = now - 1;
+			    nowid = document.getElementById('bg-' + now), nextid = document.getElementById('bg-' + next), preid = document.getElementById('bg-' + pre);
+			    if (now != imgs.length && moveY < 0) {
+			        nowid.style.zIndex = '10';
+			        console.log(windowheight)
+			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
+			        nextid.style.zIndex = '20';
+			        nextid.style.display = 'block';
+			        nextid.style.webkitTransform = 'translate(0px,' + (windowheight - Math.abs(moveY)) + 'px) translateZ(0px)';
+			    } else if (moveY > 0 && now != 1) {
+			        nowid.style.zIndex = '10';
+			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
+			        preid.style.zIndex = '20';
+			        preid.style.display = 'block';
+			        preid.style.webkitTransform = 'translate(0px,' + (windowheight - Math.abs(moveY)) * -1 + 'px) translateZ(0px)';
+			    }
+				}
 
-				$('#home .bg').addClass('bg-one')
+				function touchEnd(event) {
+			    event.preventDefault();
+			    if (now != imgs.length && moveY < 0) { //move up
+		        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
 
-				// 蛋很疼
-				$('#home,#product,#team').on('pageshow', function(){
-					var bg = $(this).find('.bg')
-					setTimeout(function() {
-						bg.addClass(bg.attr('data-cls'))
-					}, 120)
+		        nextid.style.zIndex = '20';
+		        nextid.style.display = 'block';
+		        nextid.style.webkitTransform = 'translate(0px,0px) translateZ(0px)';
+
+		        setTimeout(function() {
+		            nowid.style.display = 'none';
+		            nowid.style.webkitTransform = 'translate(0px,0px) translateZ(0px) scale(1)';
+		        }, 500);
+
+		        if (now == imgs.length - 1) {
+		            document.getElementById('view_pos_type').style.display = 'block';
+		        } else {
+		            document.getElementById('view_pos_type').style.display = 'none';
+		        }
+
+			    } else if (moveY > 0 && now != 1) { //move down
+			        nowid.style.webkitTransform = 'translate(0px,' + moveY + 'px) translateZ(0px) scale(' + (1 - (Math.abs(moveY) / windowheight)) + ')';
+			        preid.style.zIndex = '20';
+			        preid.style.display = 'block';
+			        preid.style.webkitTransform = 'translate(0px,0px) translateZ(0px)';
+
+
+			        setTimeout(function() {
+			            nowid.style.display = 'none';
+			            nowid.style.webkitTransform = 'translate(0px,0px) translateZ(0px) scale(1)';
+			        }, 500);
+
+			        if (now == imgs.length) {
+			            document.getElementById('view_pos_type').style.display = 'none';
+			        }
+
+			    }
+				}
+
+				$('.bg').each(function() {
+					this.addEventListener("touchstart", touchStart, false);
+					this.addEventListener("touchmove", touchMove, false);
+					this.addEventListener("touchend", touchEnd, false);
 				})
-
-				$('section').on('pagehide', function() {
-					clearClass()
-				})
-
-				$('#contact').on('pagebeforeshow', function(e, data) {
-					var posName = data.prevPage.find('.pos-wrap h3').text()
-					$('[name="position"]').val(posName)
-				})
-
-				$('.share').on('tap', function() {
-					alert('打开右上角菜单，点击“发送给朋友”或者“分享到朋友圈”')
-				})
-
-				$('#form1').on('submit', function(e) {
-					e.preventDefault()
-					var form = $('#form1')[0]
-					var data = {
-						nickname: form.nickname.value,
-						tel: form.tel.value,
-						qq: form.qq.value,
-						position: form.position.value
-					}
-					if(!data.nickname || !data.tel) {
-						return alert('请填写昵称和联系电话')
-					}
-					$.ajax({
-						url: '/jobs/send',
-						type: 'POST',
-						dataType: 'json',
-						data: data,
-						success: function() {
-							alert('您的信息已提交，感谢关注DataEye。我们的工作人员会在24小时内和您取得联系，请保持联系方式畅通。')
-							form.reset()
-							location.href = '#pos_type'
-						},
-						error: function(xhr, status, text) {
-							alert(xhr.responseText)
-						}
-					})
-					return false
-				})
-
 			})
 		</script>
