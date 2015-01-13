@@ -9,22 +9,73 @@
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
 		<link rel="stylesheet" href="/css/jobs.css">
+		<link rel="stylesheet" href="/css/animate.min.css">
 	</head>
 	<body>
 		<div class="page-home" id="home" style="display: block;">
 			<div class="bg-wrapper">
 				<div class="bg bg-1" data="1" id="bg-1">
+					<div class="bg-1-1 animated bounceInDown">
+						<img src="/img/jobs/page01-01.png" alt="">
+					</div>
+
 					<div class="ad">
 						<img src="/img/jobs/down.png" alt="">
 					</div>
 				</div>
 				<div class="bg bg-2" data="2" id="bg-2">
+					<div class="bg-2-1">
+						<div class="bg-2-1-1">
+							<img src="/img/jobs/page02-01.png" alt="">
+						</div>
+						<div class="bg-2-1-2">
+							<img src="/img/jobs/page02-02.png" alt="">
+						</div>
+						<div class="bg-2-1-3">
+							<img src="/img/jobs/page02-03.png" alt="">
+						</div>
+					</div>
+
 					<div class="ad">
 						<img src="/img/jobs/down.png" alt="">
 					</div>
 				</div>
 				<div class="bg bg-3" data="3" id="bg-3">
-					<a href="/jobs/list"  id="view_pos_type">查看招聘职位</a>
+					<div class="bg3 bg-3-1">
+						<img src="/img/jobs/page03-01.png" alt="">
+					</div>
+
+					<div class="bg3 bg-3-2">
+						<img src="/img/jobs/page03-02.png" alt="">
+					</div>
+
+					<div class="bg3 bg-3-3">
+						<img src="/img/jobs/page03-03.png" alt="">
+					</div>
+
+					<div class="bg3 bg-3-4">
+						<img src="/img/jobs/page03-04.png" alt="">
+					</div>
+
+					<div class="ad">
+						<img src="/img/jobs/down.png" alt="">
+					</div>
+				</div>
+				<div class="bg bg-4" data="4" id="bg-4">
+					<div class="bg-4-1">
+						<div class="bg-4-1-1">
+							<img src="/img/jobs/page04-01.png" alt="">
+						</div>
+						<div class="bg-4-1-2">
+							<img src="/img/jobs/page04-02.png" alt="">
+						</div>
+					</div>
+
+					<div class="ad">
+						<a href="/jobs/list" style="display: block;">
+							<img src="/img/jobs/down.png" alt="" style="pointer-events:none;">
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -77,15 +128,57 @@
 			}
 
 			var imgs = [
-				'/img/jobs/page-one.png',
-				'/img/jobs/page-two.png',
-				'/img/jobs/page-three.png'
+				'/img/jobs/bg01.png',
+				'/img/jobs/bg02.png',
+				'/img/jobs/bg03.png',
+				'/img/jobs/bg04.png'
 			]
+			var timer
+			// 滑动结束时的执行时间，一一对应到索引
+			var callbacks = [
+				function() {
+					$('.bg-1-1').removeClass('animated bounceInDown')
+					setTimeout(function() {
+						$('.bg-1-1').addClass('animated bounceInDown')
+					}, 10)
+				},
+				function() {
+					$('.bg3').hide()
+					clearTimeout(timer)
+					$('.bg-2-1').removeClass('animated zoomIn')
+					setTimeout(function() {
+						$('.bg-2-1').addClass('animated zoomIn')
+					}, 10)
+				},
+				function() {
+					$('.bg3').eq(0).show().addClass('animated zoomIn')
+				},
+				function() {
+					$('.bg3').hide()
+					clearTimeout(timer)
+					$('.bg-4-1').removeClass('animated zoomIn')
+					setTimeout(function() {
+						$('.bg-4-1').addClass('animated zoomIn')
+					}, 10)
+				}
+			]
+			$('.bg3').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+				var that = this
+				timer = setTimeout(function() {
+					var next = $(that).next()
+					if (next.hasClass('bg3')) {
+						$(that).hide()
+						next.show().addClass('animated zoomIn')
+					} else {
+						$(that).siblings('.bg3').hide()
+					}
+				}, 1500)
+			})
 			loadImages(imgs, function() {
 				$('#loading').hide()
 				var height = document.documentElement.clientHeight
 		    $('.bg').css('height', height + 'px').eq(0).show()
-		    $('.bg-wrapper').css('height', height * 3 + 'px')
+		    $('.bg-wrapper').css('height', height * imgs.length + 'px')
 
 		    var wrapper = $('.bg-wrapper')[0]
 		    var startY = 0
@@ -119,7 +212,7 @@
 		    		return
 		    	}
 		    	// 底部上拉禁止移动
-		    	if(top == -2 * height && moveY <= 0) {
+		    	if(top == -1 * (imgs.length - 1) * height && moveY <= 0) {
 		    		animation = false
 		    		return
 		    	}
@@ -128,14 +221,14 @@
 		    	newTop = startTop + moveY
 		    	if (newTop > 0 ) {
 		    		newTop = 0
-		    	} else if (newTop < -1 * height * 2) {
-		    		newTop = -1 * height * 2
+		    	} else if (newTop < -1 * height * (imgs.length - 1)) {
+		    		newTop = -1 * height * (imgs.length - 1)
 		    	}
 	    		$(this).css('top', newTop + 'px')
 		    }, false)
 
 		    wrapper.addEventListener('touchend', function(event) {
-		    	if (event.target.tagName == 'A') {
+		    	if (event.target.tagName == 'A' || moveY === 0) {
 		    		return
 		    	}
 		    	event.preventDefault()
@@ -149,12 +242,10 @@
 			    	if (abs > 0 && abs <= height) {
 			    		newTop = -1 * height
 			    	}
-			    	if (abs > height && abs <= 2 * height) {
-			    		newTop = -2 * height
-			    	}
-			    	$(this).animate({
-			    		top: newTop + 'px'
-			    	}, 300)
+
+			    	var stepNum = Math.min(Math.ceil(abs/height), imgs.length - 1)
+			    	newTop = -1 * stepNum * height
+			    	$(this).animate({top: newTop + 'px'}, 300, callbacks && callbacks[stepNum])
 		    	}
 		    }, false)
 			})

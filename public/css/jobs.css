@@ -64,10 +64,15 @@ margin:0 auto;
 }
 
 .pages-position .banner,.page-item .banner {
-background:#435699;
+/*background:#435699;*/
 width:100%;
 margin:0;
 padding:1rem 0;
+}
+
+.pages-position .banner {
+	background: url(../img/jobs/bg05.png) no-repeat center;
+	background: cover;
 }
 
 .head {
@@ -128,11 +133,11 @@ text-decoration:none;
 }
 
 .sell {
-background-color:#db4453 !important;
+background-color:#f42d2d !important;
 }
 
 .share {
-background-color:#289b84 !important;
+background-color:#00bfff !important;
 }
 
 .mask {
@@ -170,14 +175,14 @@ font-size:1.4rem;
 font-weight:600;
 display:inline-block;
 position:relative;
-color:#1c347e;
+color:#000;
 margin: 1rem 0;
 text-shadow: none;
 }
 
 .job_list {
 overflow:hidden;
-border-bottom: 1px solid #92a3dd;
+border-bottom: 1px solid #acadaf;
 width: 96%;
 margin:0 auto;
 padding-bottom: 12px;
@@ -193,10 +198,10 @@ margin-bottom: 0.6rem;
 }
 
 .job_list .job_box_inner {
-border: 1px solid #92a3dd;
+border: 1px solid #585d60;
 display:inline-block;
 width:92%;
-color:#114376 !important;
+color:#000 !important;
 background-color: #FFF;
 font-size: 0.8rem;
 }
@@ -207,6 +212,14 @@ font-size: 0.8rem;
 	margin-bottom: 160px;
 	color:#1c347e;
 	text-shadow: none;
+}
+
+.pos-wrap h3, .pos-wrap strong {
+	color: #1d2127;
+}
+
+.pos-wrap ol li {
+	color: #525b68;
 }
 
 #home {
@@ -237,21 +250,84 @@ font-size: 0.8rem;
 }
 
 .bg-1 {
-	background: url(../img/jobs/page-one.png) no-repeat center;
+	background: url(../img/jobs/bg01.png) no-repeat center;
 	background-size: cover;
 	z-index: 99;
 }
 
 .bg-2 {
-	background: url(../img/jobs/page-two.png) no-repeat center;
-	background-size: cover;
+	background: url(../img/jobs/bg02.png) no-repeat center top , url(../img/jobs/bg03.png) no-repeat center;
+	background-size: contain, cover;
 	z-index: 98;
 }
 
 .bg-3 {
-	background: url(../img/jobs/page-three.png) no-repeat center;
+	background: url(../img/jobs/bg03.png) no-repeat center;
 	background-size: cover;
 	z-index: 97;
+}
+
+.bg-4 {
+	background: url(../img/jobs/bg04.png) no-repeat center;
+	background-size: cover;
+	z-index: 96;
+}
+
+.bg-1-1 {
+	text-align: center;
+	margin-top: 40%;
+}
+
+.bg-1-1 img {
+	width: 86%;
+}
+
+.bg-2-1 {
+	margin-top: 35%;
+}
+
+.bg-2-1-1, .bg-2-1-2, .bg-2-1-3 {
+	text-align: center;
+	margin-top: 1.4rem;
+}
+
+.bg-2-1-1 img {
+	width: 60%;
+}
+
+.bg-2-1-2 img {
+	width: 20%;
+}
+
+.bg-2-1-3 img {
+	width: 86%;
+}
+
+.bg3 {
+	display: none;
+	text-align: center;
+	margin-top: 30%;
+}
+
+.bg3 img {
+	width: 86%;
+}
+
+.bg-3-3 {
+	margin-top: 45%;
+}
+
+.bg-4-1 {
+	margin-top: 26%;
+	text-align: center;
+}
+
+.bg-4-1-2 {
+	margin-top: 1.6rem;
+}
+
+.bg-4-1-1 img, .bg-4-1-2 img {
+		width: 90%;
 }
 
 .ad {
@@ -286,17 +362,17 @@ font-size: 0.8rem;
 }
 
 #loading {
-width: 100%;
-height: 100%;
-overflow: hidden;
-position: absolute;
-left: 0;
-top: 0;
-color: #fff;
-font-size: 1em;
-text-align: center;
-background: #3c4a7d;
-z-index: 99;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #fff;
+	font-size: 1em;
+	text-align: center;
+	background: #103957;
+	z-index: 99;
 }
 
 .spinner {
@@ -444,5 +520,9 @@ z-index: 99;
 
 #contact form, #contact .form-control {
 	color: #114376;
+}
+
+#form1 label, #form1 .form-control {
+	color: #1d2127;
 }
 

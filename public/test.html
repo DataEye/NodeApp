@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Test</title>
+	<style>
+		body {
+			padding: 1em;
+			margin: 1em;
+			font-size:1.2em;
+			word-wrap: break-word;
+			word-break: break-all;
+		}
+		body th{
+			text-align: center;
+			vertical-align: middle !important;
+		}
+	</style>
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Screen Test</h1>
+<button class="btn btn-info" id="btn">Alert</button>
+<script id="source_code">
+	document.querySelector('#btn').addEventListener('click', function(e) {
+		alert(window.devicePixelRatio + '-' + screen.width + '-' + screen.height)
+	})
+</script>
+</body>
+</html>
