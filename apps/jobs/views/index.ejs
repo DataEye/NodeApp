@@ -15,7 +15,7 @@
 		<div class="page-home" id="home" style="display: block;">
 			<div class="bg-wrapper">
 				<div class="bg bg-1" data="1" id="bg-1">
-					<div class="bg-1-1 animated bounceInDown">
+					<div class="bg-1-1">
 						<img src="/img/jobs/page01-01.png" alt="">
 					</div>
 
@@ -245,5 +245,7 @@
 			    	$(this).animate({top: newTop + 'px'}, 300, callbacks && callbacks[stepNum])
 		    	}
 		    }, false)
+
+		    $('.bg-1-1').addClass('animated bounceInDown')
 			})
 		</script>
