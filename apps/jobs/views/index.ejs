@@ -15,7 +15,7 @@
 		<div class="page-home" id="home" style="display: block;">
 			<div class="bg-wrapper">
 				<div class="bg bg-1" data="1" id="bg-1">
-					<div class="bg-1-1">
+					<div class="bgc bg-1-1">
 						<img src="/img/jobs/page01-01.png" alt="">
 					</div>
 
@@ -25,7 +25,7 @@
 				</div>
 
 				<div class="bg bg-2" data="2" id="bg-2">
-					<div class="bg-2-1">
+					<div class="bgc bg-2-1">
 						<div class="bg-2-1-1">
 							<img src="/img/jobs/page02-01.png" alt="">
 						</div>
@@ -43,7 +43,7 @@
 				</div>
 
 				<div class="bg bg-3" data="3" id="bg-3">
-					<div class="bg3 bg-3-1">
+					<div class="bgc bg3 bg-3-1">
 						<img src="/img/jobs/page03-01.png" alt="">
 					</div>
 					<div class="touchstyle-arrowup"
@@ -52,7 +52,7 @@
 				</div>
 
 				<div class="bg bg-31" id="bg-31">
-					<div class="bg3 bg-3-2">
+					<div class="bgc bg3 bg-3-2">
 						<img src="/img/jobs/page03-02.png" alt="">
 					</div>
 					<div class="touchstyle-arrowup"
@@ -61,10 +61,10 @@
 				</div>
 
 				<div class="bg bg-32" id="bg-32">
-					<div class="bg3 bg-3-3">
+					<div class="bgc bg3 bg-3-3">
 						<img src="/img/jobs/page03-03.png" alt="">
 					</div>
-					<div class="bg3 bg-3-4">
+					<div class="bgc bg3 bg-3-4">
 						<img src="/img/jobs/page03-04.png" alt="">
 					</div>
 
@@ -74,11 +74,11 @@
 				</div>
 
 				<div class="bg bg-4" data="4" id="bg-4">
-					<div class="bg-4-1">
+					<div class="bgc bg-4-1">
 						<div class="bg-4-1-1">
 							<img src="/img/jobs/page04-01.png" alt="">
 						</div>
-						<div class="bg-4-1-2">
+						<div class="bgc bg-4-1-2">
 							<img src="/img/jobs/page04-02.png" alt="">
 						</div>
 					</div>
@@ -245,6 +245,7 @@
 
 			    	var stepNum = Math.min(Math.ceil(abs/height), callbacks.length - 1)
 			    	newTop = -1 * stepNum * height
+			    	$('.bgc').hide()
 			    	$(this).animate({top: newTop + 'px'}, 300, callbacks && callbacks[stepNum])
 		    	}
 		    }, false)
