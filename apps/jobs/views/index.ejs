@@ -64,15 +64,10 @@
 					<div class="bg3 bg-3-3">
 						<img src="/img/jobs/page03-03.png" alt="">
 					</div>
-					<div class="touchstyle-arrowup"
-						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
-					</div>
-				</div>
-
-				<div class="bg bg-33">
 					<div class="bg3 bg-3-4">
 						<img src="/img/jobs/page03-04.png" alt="">
 					</div>
+
 					<div class="touchstyle-arrowup"
 						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
 					</div>
@@ -143,31 +138,39 @@
 				'/img/jobs/bg04.png'
 			]
 			var timer
-			var bg3Func =function() {
-				$('.bg3').removeClass('animated zoomIn')
-				setTimeout(function() {
-					$('.bg3').addClass('animated zoomIn')
-				}, 10)
+			var bg3Func =function(i) {
+				return function() {
+					$('.bg3').eq(i).hide().removeClass('animated zoomIn')
+					setTimeout(function() {
+						$('.bg3').eq(i).show().addClass('animated zoomIn')
+					}, 10)
+				}
 			}
 			// 滑动结束时的执行时间，一一对应到索引
 			var callbacks = [
 				function() {
-					$('.bg-1-1').removeClass('animated bounceInDown')
+					$('.bg-1-1').hide().removeClass('animated bounceInDown')
 					setTimeout(function() {
-						$('.bg-1-1').addClass('animated bounceInDown')
+						$('.bg-1-1').show().addClass('animated bounceInDown')
 					}, 10)
 				},
 				function() {
-					$('.bg-2-1').removeClass('animated zoomIn')
+					$('.bg-2-1').hide().removeClass('animated zoomIn')
 					setTimeout(function() {
-						$('.bg-2-1').addClass('animated zoomIn')
+						$('.bg-2-1').show().addClass('animated zoomIn')
 					}, 10)
 				},
-				bg3Func, bg3Func, bg3Func, bg3Func,
+				bg3Func(0), bg3Func(1),
 				function() {
-					$('.bg-4-1').removeClass('animated zoomIn')
+					$('.bg-3-3, .bg-3-4').hide().removeClass('animated zoomIn')
 					setTimeout(function() {
-						$('.bg-4-1').addClass('animated zoomIn')
+						$('.bg-3-3').show().addClass('animated zoomIn')
+					}, 10)
+				},
+				function() {
+					$('.bg-4-1').hide().removeClass('animated zoomIn')
+					setTimeout(function() {
+						$('.bg-4-1').show().addClass('animated zoomIn')
 					}, 10)
 				}
 			]
@@ -246,6 +249,10 @@
 		    	}
 		    }, false)
 
-		    $('.bg-1-1').addClass('animated bounceInDown')
+		    $('.bg-1-1').show().addClass('animated bounceInDown')
+		    $('.bg-3-3').on('webkitAnimationEnd animationEnd', function() {
+		    	$(this).hide()
+		    	$('.bg-3-4').show().addClass('animated zoomIn')
+		    })
 			})
 		</script>

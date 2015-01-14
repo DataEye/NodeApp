@@ -304,6 +304,11 @@ font-size: 0.8rem;
 	margin-top: 40%;
 }
 
+.bg-1-1, .bg-2-1, .bg3, .bg-4-1 {
+	/*opacity: 0;*/
+	display: none;
+}
+
 .bg-1-1 img {
 	width: 80%;
 }
