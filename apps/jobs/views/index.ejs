@@ -8,7 +8,7 @@
 		<meta name="apple-touch-fullscreen" content="yes" />
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
-		<link rel="stylesheet" href="/css/jobs.css">
+		<link rel="stylesheet" href="/css/jobs.css?v=1">
 		<link rel="stylesheet" href="/css/animate.min.css">
 	</head>
 	<body>
@@ -46,19 +46,33 @@
 					<div class="bg3 bg-3-1">
 						<img src="/img/jobs/page03-01.png" alt="">
 					</div>
+					<div class="touchstyle-arrowup"
+						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
+					</div>
+				</div>
 
+				<div class="bg bg-31" id="bg-31">
 					<div class="bg3 bg-3-2">
 						<img src="/img/jobs/page03-02.png" alt="">
 					</div>
+					<div class="touchstyle-arrowup"
+						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
+					</div>
+				</div>
 
+				<div class="bg bg-32" id="bg-32">
 					<div class="bg3 bg-3-3">
 						<img src="/img/jobs/page03-03.png" alt="">
 					</div>
+					<div class="touchstyle-arrowup"
+						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
+					</div>
+				</div>
 
+				<div class="bg bg-33">
 					<div class="bg3 bg-3-4">
 						<img src="/img/jobs/page03-04.png" alt="">
 					</div>
-
 					<div class="touchstyle-arrowup"
 						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
 					</div>
@@ -102,8 +116,6 @@
 		  </div>
 		</div>
 
-
-
 		<script src="/js/jquery-2.1.1.min.js"></script>
 		<script>
 			function loadImages(sources, callback) {
@@ -131,6 +143,12 @@
 				'/img/jobs/bg04.png'
 			]
 			var timer
+			var bg3Func =function() {
+				$('.bg3').removeClass('animated zoomIn')
+				setTimeout(function() {
+					$('.bg3').addClass('animated zoomIn')
+				}, 10)
+			}
 			// 滑动结束时的执行时间，一一对应到索引
 			var callbacks = [
 				function() {
@@ -140,42 +158,24 @@
 					}, 10)
 				},
 				function() {
-					$('.bg3').hide()
-					clearTimeout(timer)
 					$('.bg-2-1').removeClass('animated zoomIn')
 					setTimeout(function() {
 						$('.bg-2-1').addClass('animated zoomIn')
 					}, 10)
 				},
+				bg3Func, bg3Func, bg3Func, bg3Func,
 				function() {
-					$('.bg3').eq(0).show().addClass('animated zoomIn')
-				},
-				function() {
-					$('.bg3').hide()
-					clearTimeout(timer)
 					$('.bg-4-1').removeClass('animated zoomIn')
 					setTimeout(function() {
 						$('.bg-4-1').addClass('animated zoomIn')
 					}, 10)
 				}
 			]
-			$('.bg3').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-				var that = this
-				timer = setTimeout(function() {
-					var next = $(that).next()
-					if (next.hasClass('bg3')) {
-						$(that).hide()
-						next.show().addClass('animated zoomIn')
-					} else {
-						$(that).siblings('.bg3').hide()
-					}
-				}, 1500)
-			})
 			loadImages(imgs, function() {
 				$('#loading').hide()
 				var height = document.documentElement.clientHeight
 		    $('.bg').css('height', height + 'px').eq(0).show()
-		    $('.bg-wrapper').css('height', height * imgs.length + 'px')
+		    $('.bg-wrapper').css('height', height * callbacks.length + 'px')
 
 		    var wrapper = $('.bg-wrapper')[0]
 		    var startY = 0
@@ -209,7 +209,7 @@
 		    		return
 		    	}
 		    	// 底部上拉禁止移动
-		    	if(top == -1 * (imgs.length - 1) * height && moveY <= 0) {
+		    	if(top == -1 * (callbacks.length - 1) * height && moveY <= 0) {
 		    		animation = false
 		    		return
 		    	}
@@ -218,8 +218,8 @@
 		    	newTop = startTop + moveY
 		    	if (newTop > 0 ) {
 		    		newTop = 0
-		    	} else if (newTop < -1 * height * (imgs.length - 1)) {
-		    		newTop = -1 * height * (imgs.length - 1)
+		    	} else if (newTop < -1 * height * (callbacks.length - 1)) {
+		    		newTop = -1 * height * (callbacks.length - 1)
 		    	}
 	    		$(this).css('top', newTop + 'px')
 		    }, false)
@@ -240,7 +240,7 @@
 			    		newTop = -1 * height
 			    	}
 
-			    	var stepNum = Math.min(Math.ceil(abs/height), imgs.length - 1)
+			    	var stepNum = Math.min(Math.ceil(abs/height), callbacks.length - 1)
 			    	newTop = -1 * stepNum * height
 			    	$(this).animate({top: newTop + 'px'}, 300, callbacks && callbacks[stepNum])
 		    	}
