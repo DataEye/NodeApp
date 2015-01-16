@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		<meta name="description" content="和数据大咖公事,与游戏战队共娱,携先锋部队共战">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="apple-touch-fullscreen" content="yes" />
@@ -112,7 +113,17 @@
 		</div>
 
 		<script src="/js/jquery-2.1.1.min.js"></script>
+		<script src="/js/WeixinApi.js"></script>
 		<script>
+	    // 微信分享的数据
+	    var wxData = {
+	        "imgUrl" : 'http://career.gdatacube.net/img/jobs/dataeye.jpg',
+	        "link" : 'http://career.gdatacube.net/jobs',
+	        "desc" : '专业的人做专注的事,精细化运营助力精品游戏。现在就加入DataEye，和数据大咖工事，与游戏战队共娱，携先锋部队共战',
+	        "title" : "全球猎, DataEye需要你"
+	    }
+			WeixinApi.share(wxData, {})
+
 			function loadImages(sources, callback) {
 		    var count = 0,
 	        images = {},
@@ -256,4 +267,5 @@
 		    	$('.bg-3-4').show().addClass('animated zoomIn')
 		    })
 			})
+
 		</script>
