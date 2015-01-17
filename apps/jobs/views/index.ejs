@@ -9,7 +9,7 @@
 		<meta name="apple-touch-fullscreen" content="yes" />
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
-		<link rel="stylesheet" href="/css/jobs.css?v=5">
+		<link rel="stylesheet" href="/css/jobs.css?v=6">
 		<!-- <link rel="stylesheet" href="/css/animate.min.css"> -->
 	</head>
 	<body>
@@ -78,9 +78,6 @@
 					<div class="bgc bg-4-1">
 						<div class="bg-4-1-1">
 							<img data-src="/img/jobs/page04-01.png?t=2" alt="">
-						</div>
-						<div class="bgc bg-4-1-2">
-							<img data-src="/img/jobs/page04-02.png?t=2" alt="">
 						</div>
 					</div>
 
@@ -202,10 +199,8 @@
 
 		    var wrapper = $('.bg-wrapper')[0]
 		    var startY = 0
-		    var moveY = 0
-		    var startTop = 0
-		    var newTop = 0
-		    var animation = true
+		    var offsetNum = 0
+		    var delta = 0
 		    wrapper.addEventListener('touchstart', function(event) {
 		    	if (event.target.tagName == 'A') {
 		    		return
@@ -213,64 +208,34 @@
 		    	event.preventDefault();
 			    var touch = event.targetTouches[0]; //位于当前DOM元素上的手指的一个列表
 			    startY = touch.pageY;
-			    moveY = 0;
-			    startTop = parseInt($(this).css('top'))
 		    }, false)
 
 		    wrapper.addEventListener('touchmove', function(event) {
 		    	if (event.target.tagName == 'A') {
 		    		return
 		    	}
-		    	event.preventDefault();
+		    	event.preventDefault()
 		    	var touch = event.targetTouches[0]
-		    	moveY = touch.pageY - startY
-
-		    	var top = parseInt($(this).css('top'))
-		    	// 顶部下拉禁止移动
-		    	if (top >= 0 && moveY >= 0) {
-		    		animation = false
-		    		return
-		    	}
-		    	// 底部上拉禁止移动
-		    	if(top == -1 * (callbacks.length - 1) * height && moveY <= 0) {
-		    		animation = false
-		    		return
-		    	}
-
-		    	animation = true
-		    	newTop = startTop + moveY
-		    	if (newTop > 0 ) {
-		    		newTop = 0
-		    	} else if (newTop < -1 * height * (callbacks.length - 1)) {
-		    		newTop = -1 * height * (callbacks.length - 1)
-		    	}
-	    		$(this).css('top', newTop + 'px')
-		    }, false)
+		    	delta = touch.pageY - startY
+		    })
 
 		    wrapper.addEventListener('touchend', function(event) {
-		    	if (event.target.tagName == 'A' || moveY === 0) {
+		    	if (event.target.tagName == 'A' || delta === 0) {
 		    		return
 		    	}
 		    	event.preventDefault()
-		    	if (animation) {
-		    		// 下拉
-		    		if(moveY > 0) {
-		    			newTop = parseInt(newTop/height) * height
-		    		}
-
-			    	var abs = Math.abs(newTop)
-			    	if (abs > 0 && abs <= height) {
-			    		newTop = -1 * height
-			    	}
-
-			    	var stepNum = Math.min(Math.ceil(abs/height), callbacks.length - 1)
-			    	newTop = -1 * stepNum * height
-
-			    	$(this).animate({top: newTop + 'px'}, 200, 'linear', function() {
-			    		$('.bgc').hide()
-			    		callbacks[stepNum] && callbacks[stepNum]()
-			    	})
+		    	var isTopDown = offsetNum === 0 && delta > 0
+		    	var isBottomUp = offsetNum === callbacks.length - 1 && delta < 0
+		    	if (Math.abs(delta) < 30 || isTopDown ||  isBottomUp) {
+		    		return
 		    	}
+
+		    	offsetNum += delta > 0 ? -1 : 1
+
+		    	$(this).css('webkitTransform', 'translate3d(0px, ' + (-1 * offsetNum * height) + 'px, 0px)')
+		    	setTimeout(function() {
+		    		callbacks[offsetNum] && callbacks[offsetNum]()
+		    	}, 400)
 		    }, false)
 
 		    $('.bg-1-1').show().addClass('animated bounceInDown')
@@ -278,6 +243,7 @@
 		    	$(this).hide()
 		    	$('.bg-3-4').show().addClass('animated zoomIn')
 		    })
+
 			})
 
 		</script>
