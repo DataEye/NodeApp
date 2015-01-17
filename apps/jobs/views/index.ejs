@@ -114,7 +114,13 @@
 
 		<script src="/js/jquery-2.1.1.min.js"></script>
 		<script src="/js/WeixinApi.js"></script>
+		<script src="/js/dcagent.min.js?v=9"></script>
 		<script>
+			$(function() {
+				DCAgent.init({
+          appId: '4DFD99AC805A9918AD5B8AB2016EC322'
+				})
+			})
 	    // 微信分享的数据
 	    var wxData = {
         "imgUrl" : 'http://career.gdatacube.net/img/jobs/dataeye.jpg',
