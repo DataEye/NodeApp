@@ -70,7 +70,7 @@ padding:1rem 0;
 }
 
 .pages-position .banner {
-	background: url(../img/jobs/bg05.png) no-repeat center;
+	background: url(../img/jobs/bg05.png?t=2) no-repeat center;
 	background: cover;
 }
 
@@ -249,7 +249,7 @@ font-size: 0.8rem;
 }
 
 .bg-1 {
-	background: url(../img/jobs/bg01.jpg?t=1) no-repeat center;
+	background: url(../img/jobs/bg01.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 99;
 	border:0;
@@ -258,42 +258,42 @@ font-size: 0.8rem;
 .bg-2 {
 	/*background: url(../img/jobs/bg02.png) no-repeat center top , url(../img/jobs/bg02-0.png) no-repeat center;*/
 	/*background-size: contain, cover;*/
-	background: url(../img/jobs/bg02.jpg) no-repeat center;
+	background: url(../img/jobs/bg02.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 98;
 	border:0;
 }
 
 .bg-3 {
-	background: url(../img/jobs/bg03.jpg) no-repeat center;
+	background: url(../img/jobs/bg03.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 97;
 	border:0;
 }
 
 .bg-31 {
-	background: url(../img/jobs/bg03.jpg) no-repeat center;
+	background: url(../img/jobs/bg03.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 97;
 	border:0;
 }
 
 .bg-32 {
-	background: url(../img/jobs/bg03.jpg) no-repeat center;
+	background: url(../img/jobs/bg03.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 97;
 	border:0;
 }
 
 .bg-33 {
-	background: url(../img/jobs/bg03.jpg) no-repeat center;
+	background: url(../img/jobs/bg03.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 97;
 	border:0;
 }
 
 .bg-4 {
-	background: url(../img/jobs/bg04.jpg) no-repeat center;
+	background: url(../img/jobs/bg04.jpg?t=2) no-repeat center;
 	background-size: cover;
 	z-index: 96;
 	border:0;
