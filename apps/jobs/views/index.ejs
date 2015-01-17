@@ -10,14 +10,14 @@
 		<meta name="format-detection" content="telephone=no,email=no" />
 		<title>加入DataEye</title>
 		<link rel="stylesheet" href="/css/jobs.css?v=3">
-		<link rel="stylesheet" href="/css/animate.min.css">
+		<!-- <link rel="stylesheet" href="/css/animate.min.css"> -->
 	</head>
 	<body>
-		<div class="page-home" id="home" style="display: block;">
+		<div class="page-home" id="home" style="display: none;">
 			<div class="bg-wrapper">
 				<div class="bg bg-1" data="1" id="bg-1">
 					<div class="bgc bg-1-1">
-						<img src="/img/jobs/page01-01.png" alt="">
+						<img data-src="/img/jobs/page01-01.png" alt="">
 					</div>
 
 					<div class="touchstyle-arrowup"
@@ -28,13 +28,13 @@
 				<div class="bg bg-2" data="2" id="bg-2">
 					<div class="bgc bg-2-1">
 						<div class="bg-2-1-1">
-							<img src="/img/jobs/page02-01.png" alt="">
+							<img data-src="/img/jobs/page02-01.png" alt="">
 						</div>
 						<div class="bg-2-1-2">
-							<img src="/img/jobs/page02-02.png" alt="">
+							<img data-src="/img/jobs/page02-02.png" alt="">
 						</div>
 						<div class="bg-2-1-3">
-							<img src="/img/jobs/page02-03.png" alt="">
+							<img data-src="/img/jobs/page02-03.png" alt="">
 						</div>
 					</div>
 
@@ -45,7 +45,7 @@
 
 				<div class="bg bg-3" data="3" id="bg-3">
 					<div class="bgc bg3 bg-3-1">
-						<img src="/img/jobs/page03-01.png" alt="">
+						<img data-src="/img/jobs/page03-01.png" alt="">
 					</div>
 					<div class="touchstyle-arrowup"
 						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
@@ -54,7 +54,7 @@
 
 				<div class="bg bg-31" id="bg-31">
 					<div class="bgc bg3 bg-3-2">
-						<img src="/img/jobs/page03-02.png" alt="">
+						<img data-src="/img/jobs/page03-02.png" alt="">
 					</div>
 					<div class="touchstyle-arrowup"
 						style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;">
@@ -63,10 +63,10 @@
 
 				<div class="bg bg-32" id="bg-32">
 					<div class="bgc bg3 bg-3-3">
-						<img src="/img/jobs/page03-03.png" alt="">
+						<img data-src="/img/jobs/page03-03.png" alt="">
 					</div>
 					<div class="bgc bg3 bg-3-4">
-						<img src="/img/jobs/page03-04.png" alt="">
+						<img data-src="/img/jobs/page03-04.png" alt="">
 					</div>
 
 					<div class="touchstyle-arrowup"
@@ -77,10 +77,10 @@
 				<div class="bg bg-4" data="4" id="bg-4">
 					<div class="bgc bg-4-1">
 						<div class="bg-4-1-1">
-							<img src="/img/jobs/page04-01.png" alt="">
+							<img data-src="/img/jobs/page04-01.png" alt="">
 						</div>
 						<div class="bgc bg-4-1-2">
-							<img src="/img/jobs/page04-02.png" alt="">
+							<img data-src="/img/jobs/page04-02.png" alt="">
 						</div>
 					</div>
 
@@ -117,38 +117,36 @@
 		<script>
 	    // 微信分享的数据
 	    var wxData = {
-	        "imgUrl" : 'http://career.gdatacube.net/img/jobs/dataeye.jpg',
-	        "link" : 'http://career.gdatacube.net/jobs',
-	        "desc" : '专业的人做专注的事,精细化运营助力精品游戏。现在就加入DataEye，和数据大咖工事，与游戏战队共娱，携先锋部队共战',
-	        "title" : "全球猎, DataEye需要你"
+        "imgUrl" : 'http://career.gdatacube.net/img/jobs/dataeye.jpg',
+        "link" : 'http://career.gdatacube.net/jobs',
+        "desc" : '专业的人做专注的事,精细化运营助力精品游戏。现在就加入DataEye，和数据大咖共事，与游戏战队共娱，携先锋部队共战',
+        "title" : "全球猎Eye, DataEye需要你"
 	    }
 			WeixinApi.share(wxData, {})
 
 			function loadImages(sources, callback) {
-		    var count = 0,
-	        images = {},
-	        imgNum = 0;
+		    var count = 0, images = {}, imgNum = 0;
 		    for (src in sources) {
-	        imgNum++;
+        	imgNum++;
 		    }
 		    for (src in sources) {
 	        images[src] = new Image();
 	        images[src].onload = function() {
-	            if (++count >= imgNum) {
-	                callback(images);
-	            }
+            if (++count >= imgNum) {
+              callback(images);
+            }
 	        }
 	        images[src].src = sources[src];
 		    }
 			}
 
 			var imgs = [
-				'/img/jobs/bg01.png',
-				'/img/jobs/bg02.png',
-				'/img/jobs/bg03.png',
-				'/img/jobs/bg04.png'
+				'/img/jobs/bg01.jpg',
+				'/img/jobs/bg02.jpg',
+				'/img/jobs/bg03.jpg',
+				'/img/jobs/bg04.jpg'
 			]
-			var timer
+
 			var bg3Func =function(i) {
 				return function() {
 					$('.bg3').eq(i).hide().removeClass('animated zoomIn')
@@ -187,6 +185,9 @@
 			]
 			loadImages(imgs, function() {
 				$('#loading').hide()
+				$('#home').show()
+				$('img[data-src]').attr('src', function(){return $(this).attr('data-src')})
+
 				var height = document.documentElement.clientHeight
 		    $('.bg').css('height', height + 'px').eq(0).show()
 		    $('.bg-wrapper').css('height', height * callbacks.length + 'px')
@@ -256,8 +257,11 @@
 
 			    	var stepNum = Math.min(Math.ceil(abs/height), callbacks.length - 1)
 			    	newTop = -1 * stepNum * height
-			    	$('.bgc').hide()
-			    	$(this).animate({top: newTop + 'px'}, 300, callbacks && callbacks[stepNum])
+
+			    	$(this).animate({top: newTop + 'px'}, 200, 'linear', function() {
+			    		$('.bgc').hide()
+			    		callbacks[stepNum] && callbacks[stepNum]()
+			    	})
 		    	}
 		    }, false)
 
